@@ -15,5 +15,5 @@ export const connectDB = async () => {
 
  const conn = await connect(uri, options);
 
-  console.log(`Connected to database: ${conn.connection.name} at ${conn.connection.host} on port ${conn.connection.port}`);
+  console.log(`Connected to database: ${conn.connection.name} collection: ${conn.connection.db.databaseName}`);
 };

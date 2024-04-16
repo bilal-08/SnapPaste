@@ -15,7 +15,7 @@ export default async function code({
 }) {
   console.log(params.codeId)
   const data = await getCodeSnippetById(params.codeId);
-  console.log(data);
+  console.log(data,"data in codeId page.tsx");
   if (!data) return redirect('/');
 
   const hlblock = hljs.highlightAuto(data.content);

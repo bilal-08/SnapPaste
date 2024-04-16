@@ -8,9 +8,9 @@ connectDB();
 export async function getCodeSnippetById(
   codeId: string,
 ): Promise<ICodeSnippet> {
-  console.log(codeId, 'codeId');
+  console.log(codeId, 'codeId before finding');
   const data = await code.findOne({ codeShortId: codeId });
-  console.log(data, 'data');
+  console.log(data, 'data in data.ts');
   if (data) {
     await code.updateOne({ codeShortId: codeId }, { views: data.views + 1 });
     if (data.singleViewBurn && data.views >= 1) {

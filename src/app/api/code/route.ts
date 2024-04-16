@@ -3,7 +3,6 @@
 import { saveCodeSnippet, getCodeSnippetById } from '@/lib/database/data';
 
 import { connectDB } from '@/lib/database/mongo';
-connectDB();
 export async function POST(req: Request) {
   const { codeId, content, singleViewBurn } = await req.json();
   const alreadyExists = await getCodeSnippetById(codeId);

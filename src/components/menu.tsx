@@ -61,7 +61,7 @@ export default function Menu({
     });
 
     if (response.status == 200) {
-      toast.success('The paste is saved!', {
+      toast.success('The paste is saved! redirecting...', {
         id: toastId,
       });
       setTimeout(() => {

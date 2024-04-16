@@ -78,8 +78,8 @@ export default function Menu({
     if (navigator.share) {
       navigator
         .share({
-          title: 'paste shared from BillaPaste',
-          text: 'code snippet shared from BillaPaste',
+          title: 'paste shared from SnapPaste',
+          text: 'code snippet shared from SnapPaste',
           url: currentUrl,
         })
         .then(() => console.log('Successfully shared'))
@@ -90,7 +90,7 @@ export default function Menu({
   };
 
   const handleRedirect = () => {
-    const gitrepo = 'https://github.com';
+    const gitrepo = 'https://github.com/bilal-08/SnapPaste';
     router.push(gitrepo);
   };
   const toggleViewBurn = async () => {

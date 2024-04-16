@@ -17,6 +17,6 @@ export async function POST(req: Request) {
     );
   }
 
-  saveCodeSnippet({ codeShortId: codeId, content: content, singleViewBurn });
+  await saveCodeSnippet({ codeShortId: codeId, content: content, singleViewBurn });
   return new Response(codeId);
 }

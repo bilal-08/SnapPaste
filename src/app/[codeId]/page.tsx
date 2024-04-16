@@ -13,6 +13,7 @@ export default async function code({
     codeId: string;
   };
 }) {
+  console.log(params.codeId)
   const data = await getCodeSnippetById(params.codeId);
   console.log(data);
   if (!data) return redirect('/');

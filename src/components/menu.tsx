@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useCodeIdContext } from '@/store/context';
 import { toast } from 'sonner';
+import axios from 'axios'
 
 export default function Menu({
   textContent,
@@ -39,7 +40,7 @@ export default function Menu({
 
   const saveCode = async () => {
     if (!textContent) return void null;
-
+  
     const toastId = toast('loading...', {
       position: isMobile ? 'top-center' : 'bottom-right',
     });
@@ -51,28 +52,36 @@ export default function Menu({
         border: '2px solid#9CCFD8',
       },
     });
-    const response = await fetch('/api/code', {
-      method: 'POST',
-      body: JSON.stringify({
+    
+    try {
+      const response = await axios.post('/api/code', {
         content: textContent,
         codeId,
         singleViewBurn: isBurnEnabled,
-      }),
-    });
-
-    if (response.status == 200) {
-      toast.success('The paste is saved! redirecting...', {
-        id: toastId,
       });
-      setTimeout(() => {
-        router.push('/' + codeId);
-      }, 500);
-    } else {
-      toast.error('This path is not available, please try a different path', {
+      console.log(response.data, 'response from saveCode');
+      if (response.status === 200) {
+        toast.success('The paste is saved! redirecting...', {
+          id: toastId,
+        });
+        setTimeout(() => {
+          router.push('/' + codeId);
+        }, 500);
+      } else {
+        // Handle non-200 status codes
+        toast.error(response.data || 'An error occurred while saving the paste', {
+          id: toastId,
+        });
+      }
+    } catch (error) {
+      // Handle fetch errors
+      console.error('An error occurred during the Axios request:', error);
+      toast.error('An error occurred while saving the paste', {
         id: toastId,
       });
     }
   };
+  
 
   const shareContent = () => {
     if (navigator.share) {

@@ -4,10 +4,10 @@ import {
 } from './model/codeSnippet.model';
 type CodeSnippetDocument = Partial<InstanceType<typeof code>>;
 import { connectDB } from '@/lib/database/mongo';
-connectDB();
 export async function getCodeSnippetById(
   codeId: string,
 ): Promise<ICodeSnippet> {
+  await connectDB();
   // console.log(codeId, 'codeId before finding');
   // console.log(await code.find(),"getting all data")
   const data = await code.findOne({ codeShortId: codeId });
@@ -26,6 +26,8 @@ export async function saveCodeSnippet({
   content,
   singleViewBurn,
 }: CodeSnippetDocument) {
+  await connectDB();
+
   const data = await code.create({ codeShortId, content, singleViewBurn });
   // const data = await new code({ codeShortId, content, singleViewBurn }).save();
   console.log("DATA IS SAVED TO DATABASE!")

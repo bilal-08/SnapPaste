@@ -9,6 +9,7 @@ export async function getCodeSnippetById(
 ): Promise<ICodeSnippet> {
   await connectDB();
   const data = await code.findOne({ codeShortId: codeId });
+  console.log(code.collection.name);
   if (data) {
     await code.updateOne({ codeShortId: codeId }, { views: data.views + 1 });
     if (data.singleViewBurn && data.views >= 1) {
@@ -26,6 +27,8 @@ export async function saveCodeSnippet({
   await connectDB();
 
   const data = await code.create({ codeShortId, content, singleViewBurn });
+  console.log(code.collection.name);
+
   return data;
 }
 

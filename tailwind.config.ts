@@ -15,7 +15,7 @@ const config: Config = {
       },
     },
     fontFamily: {
-      fira: ['Fira Code'],
+      fira: ['var(--font-fira-code)'],
     },
   },
   plugins: [],

@@ -34,7 +34,7 @@ export default function TextArea({
       <div className="flex p-3">
         <div className="h-full ">
           {CodeArea ? (
-            <div className="mr-2 mt-1 select-none text-sm leading-6 text-[#908caa]">
+            <div className="mr-2 mt-[6px] select-none text-sm leading-6 text-[#908caa]">
               {lineNumbers}
             </div>
           ) : (

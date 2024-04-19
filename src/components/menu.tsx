@@ -136,7 +136,7 @@ export default function Menu({
           ''
         )}
         <div
-          className={`ease-ou fixed bottom-14 left-1/2 flex h-20 w-64 -translate-x-1/2 transform items-center justify-between rounded-2xl bg-[#26233A] p-8 py-4 transition-transform duration-700 max-sm:h-14 max-sm:w-48 max-sm:rounded-xl max-sm:p-4 ${
+          className={`ease-ou fixed bottom-14 left-1/2 flex h-20 w-64 -translate-x-1/2 transform items-center justify-between rounded-2xl bg-[#26233A] p-8 py-4 transition-transform duration-700 max-sm:h-20 max-sm:w-52 max-sm:rounded-xl max-sm:p-4 ${
             visible ? 'translate-y-0' : 'translate-y-36'
           }`}
         >

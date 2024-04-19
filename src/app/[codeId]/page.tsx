@@ -14,9 +14,7 @@ export default async function code({
   };
 }) {
   const data = await getCodeSnippetById(params.codeId);
-  console.log(data,"data in codeID.tsx")
   const allCodes = await getAllCodes();
-  console.log(allCodes,"allCodes in codeID.tsx")
   if (!data) return redirect('/');
 
   const hlblock = hljs.highlightAuto(data.content);

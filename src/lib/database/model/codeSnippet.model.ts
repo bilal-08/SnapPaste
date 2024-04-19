@@ -15,4 +15,5 @@ class CodeSnippet {
 }
 export const CodeSnippetModel =
   mongoose.models?.CodeSnippet || getModelForClass(CodeSnippet);
+  console.log(mongoose.models)
 export type CodeSnippetDocument = Document & CodeSnippet;

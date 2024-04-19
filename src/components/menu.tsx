@@ -59,13 +59,12 @@ export default function Menu({
         codeId,
         singleViewBurn: isBurnEnabled,
       });
-      console.log(response.data, 'response from saveCode');
       if (response.status === 200) {
         toast.success('The paste is saved! redirecting...', {
           id: toastId,
         });
         setTimeout(() => {
-          router.push('/' + codeId);
+          router.push('/' + response.data);
         }, 500);
       } else {
         // Handle non-200 status codes

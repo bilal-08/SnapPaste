@@ -8,10 +8,7 @@ connectDB();
 export async function getCodeSnippetById(
   codeId: string,
 ): Promise<ICodeSnippet> {
-  // console.log(codeId, 'codeId before finding');
-  // console.log(await code.find(),"getting all data")
   const data = await code.findOne({ codeShortId: codeId });
-  console.log(data, 'data in data.ts');
   if (data) {
     await code.updateOne({ codeShortId: codeId }, { views: data.views + 1 });
     if (data.singleViewBurn && data.views >= 1) {
@@ -27,7 +24,5 @@ export async function saveCodeSnippet({
   singleViewBurn,
 }: CodeSnippetDocument) {
   const data = await code.create({ codeShortId, content, singleViewBurn });
-  // const data = await new code({ codeShortId, content, singleViewBurn }).save();
-  console.log("DATA IS SAVED TO DATABASE!")
   return data;
 }

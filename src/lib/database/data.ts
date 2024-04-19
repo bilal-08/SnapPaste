@@ -1,12 +1,9 @@
-import {
-  CodeSnippetModel as code,
-  type CodeSnippetDocument as ICodeSnippet,
-} from './model/codeSnippet.model';
+import {default as code} from './model/codeSnippet.model';
 type CodeSnippetDocument = Partial<InstanceType<typeof code>>;
 import { connectDB } from '@/lib/database/mongo';
 export async function getCodeSnippetById(
   codeId: string,
-): Promise<ICodeSnippet> {
+){
   await connectDB();
   const data = await code.findOne({ codeShortId: codeId });
   console.log(code.collection.name);

@@ -1,19 +1,14 @@
-import { prop, getModelForClass, mongoose } from '@typegoose/typegoose';
-import { Document } from 'mongoose';
-class CodeSnippet {
-  @prop({ unique: true })
-  codeShortId!: string;
+import mongoose from 'mongoose';
 
-  @prop()
-  content!: string;
+const { Schema, model } = mongoose;
 
-  @prop({ default: 0 })
-  views: number;
+const codeSnippetSchema = new Schema({
+  codeShortId: { type: String, unique: true },
+  content: { type: String, required: true },
+  views: { type: Number, default: 0 },
+  singleViewBurn: { type: Boolean, default: false }
+});
 
-  @prop({ default: false })
-  singleViewBurn: boolean;
-}
-export const CodeSnippetModel =
-  mongoose.models?.CodeSnippet || getModelForClass(CodeSnippet);
-  console.log(mongoose.models)
-export type CodeSnippetDocument = Document & CodeSnippet;
+const CodeSnippetModel = mongoose.models.CodeSnippet || model('CodeSnippet', codeSnippetSchema);
+
+export default CodeSnippetModel;

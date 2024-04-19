@@ -1,5 +1,5 @@
 import TextArea from '@/components/TextArea';
-import { getCodeSnippetById } from '@/lib/database/data';
+import { getCodeSnippetById,getAllCodes } from '@/lib/database/data';
 import { CodeIdProvider } from '@/store/context';
 import { redirect } from 'next/navigation';
 import hljs from 'highlight.js/lib/common';
@@ -15,6 +15,8 @@ export default async function code({
 }) {
   const data = await getCodeSnippetById(params.codeId);
   console.log(data,"data in codeID.tsx")
+  const allCodes = await getAllCodes();
+  console.log(allCodes,"allCodes in codeID.tsx")
   if (!data) return redirect('/');
 
   const hlblock = hljs.highlightAuto(data.content);

@@ -28,3 +28,10 @@ export async function saveCodeSnippet({
   const data = await code.create({ codeShortId, content, singleViewBurn });
   return data;
 }
+
+export async function getAllCodes() {
+  await connectDB();
+  const data = await code.find();
+  console.log(code.collection.name);
+  return data;
+}

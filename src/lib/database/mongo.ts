@@ -13,7 +13,7 @@ export const connectDB = async () => {
 
   const options = {} as ConnectOptions;
 
- const conn = await connect(uri, options);
+  const conn = await connect(uri, options);
 
   console.log(`Connected to database: ${conn.connection.name} collection: ${conn.connection.db.databaseName}`);
 };
